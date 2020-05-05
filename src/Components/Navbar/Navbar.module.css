@@ -1,0 +1,16 @@
+.list {
+  min-width: 100px;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: bold;
+  padding: 10px;
+  list-style: none;
+  border: rgb(0, 119, 255) 1px dotted;
+  height: 100vh;
+}
+
+.list a {
+  color: gray;
+  text-decoration: none;
+
+}
