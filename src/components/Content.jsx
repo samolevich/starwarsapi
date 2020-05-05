@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Payload from './Payload';
 import Navigation from './Navigation';
+// import styles from './Content.module.css';
 
 export class Content extends Component {
   render() {
