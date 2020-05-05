@@ -6,7 +6,7 @@ import Payload from './Components/Payload/Payload';
 import Post from './Components/Post/Post';
 import Profile from './Components/Profile/Profile';
 import { Route, BrowserRouter } from 'react-router-dom';
-import styles from './App.module.css'
+import styles from './App.module.css';
 
 class App extends React.Component {
   render() {

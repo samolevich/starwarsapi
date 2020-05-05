@@ -12,5 +12,8 @@
 .list a {
   color: gray;
   text-decoration: none;
+}
 
+.list a:hover {
+  color: rgb(81, 185, 255);
 }

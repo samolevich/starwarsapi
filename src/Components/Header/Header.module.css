@@ -1,13 +1,12 @@
 .header {
   top: 0;
-  height: 60px;
   color: white;
   background-color: rgb(123, 193, 250);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
 }
 
-img {
+.header img {
   width: 60px;
 }
