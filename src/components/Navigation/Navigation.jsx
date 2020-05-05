@@ -7,16 +7,16 @@ export class Navigation extends Component {
       <div className="row">
         <div className='collection col s12'>
           <a href='/' className='collection-item'>
-            Link
+            Main
           </a>
-          <a href='/' className='collection-item active'>
-            Link
+          <a href='/profile' className='collection-item active'>
+            Profile
           </a>
-          <a href='/' className='collection-item'>
-            Link
+          <a href='/messages' className='collection-item'>
+            Messages
           </a>
-          <a href='/' className='collection-item'>
-            Link
+          <a href='/posts' className='collection-item'>
+            Posts
           </a>
         </div>
       </div>
