@@ -3,7 +3,7 @@
   text-decoration: none;
   font-size: larger;
   font-weight: bold;
-  padding: 10px;
+  padding: 20px;
   list-style: none;
   border: rgb(0, 119, 255) 1px dotted;
   height: 100vh;
@@ -16,4 +16,8 @@
 
 .list a:hover {
   color: rgb(81, 185, 255);
+}
+
+.list .current{
+  color: rgb(54, 54, 54);
 }
