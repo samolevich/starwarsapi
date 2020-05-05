@@ -4,10 +4,20 @@ import React, { Component } from 'react';
 class Post extends Component {
   render() {
     return (
-      <div>
-        {this.props.message}
-      </div>
-    )
+      <ul class='collection'>
+        <li class='collection-item avatar'>
+          <img src='avatar.svg' alt='' class='circle' />
+          <span class='title'>Title</span>
+          <p>
+            First Line <br />
+            {this.props.message}
+          </p>
+          <a href='/' class='secondary-content'>
+            <img src="like.svg" alt="like" />like
+          </a>
+        </li>
+      </ul>
+    );
   }
 }
 
