@@ -21,7 +21,7 @@ class App extends React.Component {
           <Route path='/profile' component={Profile} />
           <Route
             path='/list'
-            render={ () => <List pullOfUsers={ this.props.pullOfUsers } />}
+            render={ () => <List pullOfUsers={ this.props.state.pullOfUsers } />}
           />
         </div>
         <Footer />
