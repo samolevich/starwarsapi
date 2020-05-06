@@ -6,13 +6,13 @@ import Payload from './Components/Payload/Payload';
 import Post from './Components/Post/Post';
 import Profile from './Components/Profile/Profile';
 import List from './Components/List/List';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import styles from './App.module.css';
 
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <>
         <Header />
         <div className={styles.content}>
           <Navbar />
@@ -25,7 +25,7 @@ class App extends React.Component {
           />
         </div>
         <Footer />
-      </BrowserRouter>
+      </>
     );
   }
 }
