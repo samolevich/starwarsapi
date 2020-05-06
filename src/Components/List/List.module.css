@@ -5,6 +5,7 @@
 }
 
 .person a {
+  display: flexbox;
   text-decoration: none;
   color: dimgrey;
 }
