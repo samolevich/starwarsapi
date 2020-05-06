@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Payload from './Components/Payload/Payload';
 import Post from './Components/Post/Post';
 import Profile from './Components/Profile/Profile';
+import List from './Components/List/List';
 import { Route, BrowserRouter } from 'react-router-dom';
 import styles from './App.module.css';
 
@@ -18,6 +19,7 @@ class App extends React.Component {
           <Route path='/payload' component={Payload} />
           <Route path='/post' component={Post} />
           <Route path='/profile' component={Profile} />
+          <Route path='/list' component={List} />
         </div>
         <Footer />
       </BrowserRouter>

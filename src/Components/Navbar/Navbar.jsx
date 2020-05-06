@@ -18,6 +18,9 @@ class Navbar extends Component {
         <li>
           <NavLink activeClassName={styles.current} to='/profile'>profile</NavLink>
         </li>
+        <li>
+          <NavLink activeClassName={styles.current} to='/list'>list</NavLink>
+        </li>
       </nav>
     );
   }

@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <header className={styles.header}>
-        <img src='./img/avatar.svg' alt='avatar' />
+        <img src='/img/avatar.svg' alt='avatar' />
       </header>
     );
   }
