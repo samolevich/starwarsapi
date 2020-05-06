@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import styles from './List.module.css';
+import Person from '../Person/Person';
 
 const pullOfUsers = [
   { name: 'Rafael', route: 1 },
@@ -13,16 +12,6 @@ const pullOfUsers = [
   { name: 'Selaphiel', route: 8 },
   { name: 'Jegudiel', route: 9 },
 ];
-
-class Person extends Component {
-  render() {
-    return (
-      <div className={styles.person}>
-        <NavLink to={`/list/${this.props.route}`}>{this.props.name}</NavLink>
-      </div>
-    );
-  }
-}
 
 class List extends Component {
   render() {
