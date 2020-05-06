@@ -19,7 +19,10 @@ class App extends React.Component {
           <Route path='/payload' component={Payload} />
           <Route path='/post' component={Post} />
           <Route path='/profile' component={Profile} />
-          <Route path='/list' component={List} />
+          <Route
+            path='/list'
+            render={ () => <List pullOfUsers={ this.props.pullOfUsers } />}
+          />
         </div>
         <Footer />
       </BrowserRouter>
