@@ -6,7 +6,7 @@ class Post extends Component {
   postArea = React.createRef();
 
   alerting = () => {
-    alert(this.postArea.current.value);
+    this.props.addPost(this.postArea.current.value);
   }
 
   render() {
@@ -16,6 +16,7 @@ class Post extends Component {
         <textarea ref={this.postArea} cols='40' rows='5'></textarea>
         <br />
         <button onClick={this.alerting}>Add post</button>
+        <div>{this.props.state.posts}</div>
       </div>
     );
   }

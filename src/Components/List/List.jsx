@@ -6,7 +6,7 @@ import Person from '../Person/Person';
 class List extends Component {
   render() {
     return (
-        this.props.pullOfUsers.map(person => <Person name={person.name} route={person.route} />)
+        this.props.usersPool.map(person => <Person name={person.name} route={person.route} />)
     );
   }
 }

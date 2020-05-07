@@ -1,5 +1,7 @@
-const state = {
-  pullOfUsers: [
+import App from '../App'
+
+export const state = {
+  usersPool: [
     { name: 'Rafael', route: 1 },
     { name: 'Michael', route: 2 },
     { name: 'Gabriel', route: 3 },
@@ -10,6 +12,12 @@ const state = {
     { name: 'Selaphiel', route: 8 },
     { name: 'Jegudiel', route: 9 },
   ],
+  posts: ['string', 'anotherString']
 };
+
+export const addPost = (text) => {
+  state.posts.push(text);
+  new App()
+}
 
 export default state;

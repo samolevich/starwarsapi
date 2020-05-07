@@ -17,7 +17,7 @@ class App extends React.Component {
         <div className={styles.content}>
           <Navbar />
           <Route path='/payload' component={Payload} />
-          <Route path='/post' component={Post} />
+          <Route path='/post' render={ () => <Post state={this.props.state} addPost={this.props.addPost} /> } />
           <Route path='/profile' component={Profile} />
           <Route
             path='/list'
