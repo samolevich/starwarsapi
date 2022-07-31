@@ -9,6 +9,7 @@ import {
 } from "../services";
 import Header from "./Header";
 import ItemList from "./ItemList";
+import Card from "./Card";
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -32,14 +33,21 @@ const App = () => {
   return (
     <>
       <Header />
-      <p>{person.name}</p>
-      <p>{planet.name}</p>
-      <p>{starship.name}</p>
-      <ItemList list={people} />
-      <hr />
-      <ItemList list={planets} />
-      <hr />
-      <ItemList list={starships} />
+      <div className="content-wrapper">
+        <div className="content-list">
+          <p>{person.name}</p>
+          <p>{planet.name}</p>
+          <p>{starship.name}</p>
+          <ItemList list={people} />
+          <hr />
+          <ItemList list={planets} />
+          <hr />
+          <ItemList list={starships} />
+        </div>
+        <div className="content-details">
+          <Card />
+        </div>
+      </div>
     </>
   );
 };

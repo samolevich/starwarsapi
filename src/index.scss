@@ -1,2 +1,18 @@
 @import url(./normalize.css);
 @import url(./bootswatch.css);
+
+.navbar {
+  margin-bottom: 16px;
+}
+.content-wrapper {
+  margin: 0 auto;
+  width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  width: 800px;
+}
