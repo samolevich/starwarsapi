@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+
 import {
   getAllPeople,
   getAllPlanets,
@@ -7,9 +9,14 @@ import {
   getPlanet,
   getStarShip,
 } from "../services";
-import Header from "./Header";
+
 import ItemList from "./ItemList";
 import Card from "./Card";
+import Layout from "./Layout";
+import Homepage from "./Homepage";
+import Persons from "./Persons";
+import Starships from "./Starships";
+import Planets from "./Planets";
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -22,32 +29,27 @@ const App = () => {
   useEffect(() => {
     (async () => {
       setPeople(await getAllPeople());
-      setPlanets(await getAllPlanets());
-      setStarships(await getAllStarships());
+      // setPlanets(await getAllPlanets());
+      // setStarships(await getAllStarships());
       setPerson(await getPerson(2));
-      setPlanet(await getPlanet(2));
-      setStarship(await getStarShip(2));
+      // setPlanet(await getPlanet(2));
+      // setStarship(await getStarShip(2));
     })();
   }, []);
 
   return (
     <>
-      <Header />
-      <div className="content-wrapper">
-        <div className="content-list">
-          <p>{person.name}</p>
-          <p>{planet.name}</p>
-          <p>{starship.name}</p>
-          <ItemList list={people} />
-          <hr />
-          <ItemList list={planets} />
-          <hr />
-          <ItemList list={starships} />
-        </div>
-        <div className="content-details">
-          <Card />
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route
+            path="persons"
+            element={<Persons person={person} people={people} />}
+          />
+          <Route path="starships" element={<Starships />} />
+          <Route path="planets" element={<Planets />} />
+        </Route>
+      </Routes>
     </>
   );
 };

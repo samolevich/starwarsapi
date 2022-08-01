@@ -5,9 +5,9 @@ const getResource = async url => {
     const res = await fetch(`${URL}/${url}`);
     if (!res.ok) return { name: "failed fetch" };
     return await res.json();
-  } catch (e) {
-    console.error(e.message);
-    console.error("Status is", e.status);
+  } catch (err) {
+    console.error(err.message);
+    console.error("Status is", err.status);
     return false;
   }
 };
@@ -25,7 +25,7 @@ const getStarShip = id => getEntity("starships", id);
 
 const getAllEntities = async entities => {
   const res = await getResource(entities);
-  if (!res) return [{ name: "failed" }];
+  if (!res) return [{ name: "oops! something went wrong :| " }];
   return res.results;
 };
 
