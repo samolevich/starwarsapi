@@ -41,6 +41,7 @@
   display: grid;
   row-gap: 50px;
   justify-items: center;
+  height: fit-content;
 }
 
 .lightsaber a {
@@ -53,6 +54,7 @@
   border-radius: 20px / 50%;
   background-color: #fff;
   text-transform: uppercase;
+  height: 100px;
 }
 
 .lightsaber {
