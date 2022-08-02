@@ -1,17 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import {
-  getAllPeople,
-  // getAllPlanets,
-  // getAllStarships,
-  getPerson,
-  // getPlanet,
-  // getStarShip,
-} from "../services";
+import { getPerson, getStarship, getPlanet } from "../services";
 
-// import ItemList from "./ItemList";
-// import Card from "./Card";
 import Layout from "./Layout";
 import Homepage from "./Homepage";
 import Persons from "./Persons";
@@ -20,11 +11,11 @@ import Planets from "./Planets";
 
 const App = () => {
   const [people, setPeople] = useState([]);
-  // const [planets, setPlanets] = useState([]);
-  // const [starships, setStarships] = useState([]);
+  const [starships, setStarships] = useState([]);
+  const [planets, setPlanets] = useState([]);
   const [person, setPerson] = useState({});
-  // const [planet, setPlanet] = useState({});
-  // const [starship, setStarship] = useState({});
+  const [starship, setStarship] = useState({});
+  const [planet, setPlanet] = useState({});
 
   const routes = [
     { name: "Home", path: "" },
@@ -33,22 +24,18 @@ const App = () => {
     { name: "Planets", path: "planets" },
   ];
 
-  useEffect(() => {
-    (async () => {
-      setPeople(await getAllPeople());
-      // setPlanets(await getAllPlanets());
-      // setStarships(await getAllStarships());
-      // setPerson(await getPerson(1));
-      // setPlanet(await getPlanet(2));
-      // setStarship(await getStarShip(2));
-    })();
-    getPerson(5).then(person => setPerson(person));
-  }, []);
-
-  const onItemClick = id => {
+  const onPersonClick = id => {
     getPerson(id).then(person => setPerson(person));
   };
-  // console.log(people);
+
+  const onStarshipClick = id => {
+    getStarship(id).then(starship => setStarship(starship));
+  };
+
+  const onPlanetClick = id => {
+    getPlanet(id).then(planet => setPlanet(planet));
+  };
+
   return (
     <>
       <Routes>
@@ -60,12 +47,36 @@ const App = () => {
               <Persons
                 person={person}
                 people={people}
-                onItemClick={onItemClick}
+                setPeople={setPeople}
+                setPerson={setPerson}
+                onPersonClick={onPersonClick}
               />
             }
           />
-          <Route path="starships" element={<Starships />} />
-          <Route path="planets" element={<Planets />} />
+          <Route
+            path="starships"
+            element={
+              <Starships
+                starship={starship}
+                starships={starships}
+                setStarship={setStarship}
+                setStarships={setStarships}
+                onStarshipClick={onStarshipClick}
+              />
+            }
+          />
+          <Route
+            path="planets"
+            element={
+              <Planets
+                planet={planet}
+                planets={planets}
+                setPlanet={setPlanet}
+                setPlanets={setPlanets}
+                onPlanetClick={onPlanetClick}
+              />
+            }
+          />
         </Route>
       </Routes>
     </>

@@ -13,9 +13,17 @@ const getResource = async url => {
 };
 
 const getEntity = async (entity, id = "") => {
-  const res = await getResource(`${entity}/${id}`);
-  return res;
+  try {
+    const res = await getResource(`${entity}/${id}`);
+    return res;
+  } catch (err) {
+    console.error(err.message);
+    console.error("Status is", err.status);
+    return {};
+  }
 };
+
+// const extractId = url => url.match(/\/(\d*)\/$/)[1];
 
 const modificationPersonData = person => {
   return {
@@ -34,6 +42,7 @@ const modificationPersonData = person => {
 
 const modificationStarshipData = starship => {
   return {
+    header: "Starship",
     MGLT: starship.MGLT,
     "Cargo Capacity": starship.cargo_capacity,
     Consumables: starship.consumables,
@@ -43,15 +52,17 @@ const modificationStarshipData = starship => {
     Length: `${starship.length}m`,
     Manufacturer: starship.manufacturer,
     Model: starship.model,
-    Name: starship.name,
+    name: starship.name,
     Passengers: starship.passengers,
     "Starship Class": starship.starship_class,
-    id: starship.url,
+    id: starship.url.match(/\/(\d*)\/$/)[1],
   };
 };
+
 const modificationPlanetData = planet => {
   return {
-    Name: planet.name,
+    header: "Planet",
+    name: planet.name,
     Diameter: `${planet.diameter}km`,
     "Rotation period": planet.rotation_period,
     "Orbital period": planet.orbital_period,
@@ -59,7 +70,7 @@ const modificationPlanetData = planet => {
     Terrain: planet.terrain,
     Gravity: `${planet.gravity}G`,
     "Surface water": `${planet.surface_water}%`,
-    id: planet.url,
+    id: planet.url.match(/\/(\d*)\/$/)[1],
   };
 };
 
@@ -68,9 +79,15 @@ const getPerson = async id => {
   return modificationPersonData(person);
 };
 
-const getPlanet = id => modificationPlanetData(getEntity("planets", id));
+const getPlanet = async id => {
+  const planet = await getEntity("planets", id);
+  return modificationPlanetData(planet);
+};
 
-const getStarShip = id => modificationStarshipData(getEntity("starships", id));
+const getStarship = async id => {
+  const starship = await getEntity("starships", id);
+  return modificationStarshipData(starship);
+};
 
 const getAllEntities = async entities => {
   const res = await getResource(entities);
@@ -83,9 +100,15 @@ const getAllPeople = async () => {
   return people.map(person => modificationPersonData(person));
 };
 
-const getAllPlanets = () => getAllEntities("planets");
+const getAllPlanets = async () => {
+  const planets = await getAllEntities("planets");
+  return planets.map(planet => modificationPlanetData(planet));
+};
 
-const getAllStarships = () => getAllEntities("starships");
+const getAllStarships = async () => {
+  const starships = await getAllEntities("starships");
+  return starships.map(starship => modificationStarshipData(starship));
+};
 
 export {
   getAllPeople,
@@ -93,5 +116,5 @@ export {
   getAllStarships,
   getPerson,
   getPlanet,
-  getStarShip,
+  getStarship,
 };

@@ -12,6 +12,11 @@
   padding-left: var(--bs-navbar-nav-link-padding-x);
 }
 
+// overwrite lib styles
+.badge {
+  white-space: pre-wrap;
+}
+
 .navbar {
   margin-bottom: 16px;
 }

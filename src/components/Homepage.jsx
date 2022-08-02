@@ -1,22 +1,15 @@
 import { Link } from "react-router-dom";
 
-const Homepage = () => {
+const Homepage = ({ routes }) => {
+  const links = routes.map(link => (
+    <div className="lightsaber" key={link.name}>
+      <Link to={link.path}>{link.name}</Link>
+    </div>
+  ));
+
   return (
     <>
-      <div className="menu">
-        <div className="lightsaber">
-          <Link to="">Home</Link>
-        </div>
-        <div className="lightsaber">
-          <Link to="persons">Persons</Link>
-        </div>
-        <div className="lightsaber">
-          <Link to="starships">Starships</Link>
-        </div>
-        <div className="lightsaber">
-          <Link to="planets">Planets</Link>
-        </div>
-      </div>
+      <div className="menu">{links}</div>
     </>
   );
 };
