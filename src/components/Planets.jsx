@@ -6,8 +6,7 @@ import ItemList from "./ItemList";
 const Planets = ({ planets, planet, onPlanetClick, setPlanet, setPlanets }) => {
   useEffect(() => {
     getAllPlanets().then(planets => setPlanets(planets));
-    const randomOneOfTen = Math.floor(Math.random() * 10 + 1);
-    getPlanet(randomOneOfTen).then(planet => setPlanet(planet));
+    getPlanet(2).then(planet => setPlanet(planet));
     // eslint-disable-next-line
   }, []);
 

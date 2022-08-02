@@ -12,8 +12,7 @@ const Starships = ({
 }) => {
   useEffect(() => {
     getAllStarships().then(ships => setStarships(ships));
-    const randomOneOfTen = Math.floor(Math.random() * 10 + 1);
-    getStarship(randomOneOfTen).then(starship => setStarship(starship));
+    getStarship(2).then(starship => setStarship(starship));
     // eslint-disable-next-line
   }, []);
 

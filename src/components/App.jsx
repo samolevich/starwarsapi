@@ -10,12 +10,17 @@ import Starships from "./Starships";
 import Planets from "./Planets";
 
 const App = () => {
-  const [people, setPeople] = useState([]);
-  const [starships, setStarships] = useState([]);
-  const [planets, setPlanets] = useState([]);
-  const [person, setPerson] = useState({});
-  const [starship, setStarship] = useState({});
-  const [planet, setPlanet] = useState({});
+  const initialEntity = {
+    name: "wait..",
+    header: "wait..",
+    id: 0,
+  };
+  const [people, setPeople] = useState([initialEntity]);
+  const [starships, setStarships] = useState([initialEntity]);
+  const [planets, setPlanets] = useState([initialEntity]);
+  const [person, setPerson] = useState(initialEntity);
+  const [starship, setStarship] = useState(initialEntity);
+  const [planet, setPlanet] = useState(initialEntity);
 
   const routes = [
     { name: "Home", path: "" },

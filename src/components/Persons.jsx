@@ -6,8 +6,7 @@ import ItemList from "./ItemList";
 const Persons = ({ people, person, onPersonClick, setPerson, setPeople }) => {
   useEffect(() => {
     getAllPeople().then(people => setPeople(people));
-    const randomOneOfTen = Math.floor(Math.random() * 10 + 1);
-    getPerson(randomOneOfTen).then(person => setPerson(person));
+    getPerson(2).then(person => setPerson(person));
     // eslint-disable-next-line
   }, []);
 
