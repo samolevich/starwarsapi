@@ -45,7 +45,9 @@ const App = () => {
     getPerson(5).then(person => setPerson(person));
   }, []);
 
-  const onItemClick = id => {};
+  const onItemClick = id => {
+    getPerson(id).then(person => setPerson(person));
+  };
   // console.log(people);
   return (
     <>
@@ -54,7 +56,13 @@ const App = () => {
           <Route index element={<Homepage routes={routes} />} />
           <Route
             path="persons"
-            element={<Persons person={person} people={people} />}
+            element={
+              <Persons
+                person={person}
+                people={people}
+                onItemClick={onItemClick}
+              />
+            }
           />
           <Route path="starships" element={<Starships />} />
           <Route path="planets" element={<Planets />} />
