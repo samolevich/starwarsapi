@@ -3,12 +3,11 @@ const URL = "https://swapi.dev/api/";
 const getResource = async url => {
   try {
     const res = await fetch(`${URL}/${url}`);
-    if (!res.ok) return { name: "failed fetch" };
-    return await res.json();
+    if (res.ok) return await res.json();
+    throw new Error(res);
   } catch (err) {
     console.error(err.message);
-    console.error("Status is", err.status);
-    return false;
+    console.error(`Could not fetch ${URL}/${url}`);
   }
 };
 
@@ -23,7 +22,9 @@ const getEntity = async (entity, id = "") => {
   }
 };
 
-// const extractId = url => url.match(/\/(\d*)\/$/)[1];
+const extractId = url => {
+  if (url) return url.match(/\/(\d*)\/$/)[1];
+};
 
 const modificationPersonData = person => {
   return {
@@ -36,7 +37,7 @@ const modificationPersonData = person => {
     Mass: person.mass,
     name: person.name,
     "Skin Color": person.skin_color,
-    id: person.url.match(/\/(\d*)\/$/)[1],
+    id: extractId(person.url),
   };
 };
 
@@ -55,7 +56,7 @@ const modificationStarshipData = starship => {
     name: starship.name,
     Passengers: starship.passengers,
     "Starship Class": starship.starship_class,
-    id: starship.url.match(/\/(\d*)\/$/)[1],
+    id: extractId(starship.url),
   };
 };
 
@@ -70,7 +71,7 @@ const modificationPlanetData = planet => {
     Terrain: planet.terrain,
     Gravity: `${planet.gravity}G`,
     "Surface water": `${planet.surface_water}%`,
-    id: planet.url.match(/\/(\d*)\/$/)[1],
+    id: extractId(planet.url),
   };
 };
 
