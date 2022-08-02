@@ -1,12 +1,24 @@
 @import url(./normalize.css);
 @import url(./bootswatch.css);
 
+// overwrite lib styles
+.navbar-expand-lg .navbar-nav {
+  flex-direction: row;
+}
+
+// overwrite lib styles
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: var(--bs-navbar-nav-link-padding-x);
+  padding-left: var(--bs-navbar-nav-link-padding-x);
+}
+
 .navbar {
   margin-bottom: 16px;
 }
+
 .content-wrapper {
   margin: 0 auto;
-  width: 800px;
+  max-width: 800px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
@@ -15,4 +27,8 @@
 .container-fluid {
   margin: 0 auto;
   width: 800px;
+}
+
+.menu {
+  margin: auto;
 }

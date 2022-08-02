@@ -17,11 +17,59 @@ const getEntity = async (entity, id = "") => {
   return res;
 };
 
-const getPerson = id => getEntity("people", id);
+const modificationPersonData = person => {
+  return {
+    header: "Personage",
+    "Birth Year": person.birth_year,
+    "Eye Color": person.eye_color,
+    Gender: person.gender,
+    "Hair Color": person.hair_color,
+    Height: person.height,
+    Mass: person.mass,
+    name: person.name,
+    "Skin Color": person.skin_color,
+  };
+};
 
-const getPlanet = id => getEntity("planets", id);
+const modificationStarshipData = starship => {
+  return {
+    MGLT: starship.MGLT,
+    "Cargo Capacity": starship.cargo_capacity,
+    Consumables: starship.consumables,
+    Cost: `${starship.cost_in_credits} credits`,
+    Crew: starship.crew,
+    "Hyperdrive Rating": starship.hyperdrive_rating,
+    Length: `${starship.length}m`,
+    Manufacturer: starship.manufacturer,
+    Model: starship.model,
+    Name: starship.name,
+    Passengers: starship.passengers,
+    "Starship Class": starship.starship_class,
+    id: starship.url,
+  };
+};
+const modificationPlanetData = planet => {
+  return {
+    Name: planet.name,
+    Diameter: `${planet.diameter}km`,
+    "Rotation period": planet.rotation_period,
+    "Orbital period": planet.orbital_period,
+    Population: planet.population,
+    Terrain: planet.terrain,
+    Gravity: `${planet.gravity}G`,
+    "Surface water": `${planet.surface_water}%`,
+    id: planet.url,
+  };
+};
 
-const getStarShip = id => getEntity("starships", id);
+const getPerson = async id => {
+  const person = await getEntity("people", id);
+  return modificationPersonData(person);
+};
+
+const getPlanet = id => modificationPlanetData(getEntity("planets", id));
+
+const getStarShip = id => modificationStarshipData(getEntity("starships", id));
 
 const getAllEntities = async entities => {
   const res = await getResource(entities);

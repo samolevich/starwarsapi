@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
-const Layout = () => {
+const Layout = ({ routes }) => {
   return (
     <>
-      <Header />
+      <Header routes={routes} />
       <div className="content-wrapper">
         <Outlet />
       </div>
