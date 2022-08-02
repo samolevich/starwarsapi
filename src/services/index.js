@@ -28,6 +28,7 @@ const modificationPersonData = person => {
     Mass: person.mass,
     name: person.name,
     "Skin Color": person.skin_color,
+    id: person.url.match(/\/(\d*)\/$/)[1],
   };
 };
 
@@ -77,11 +78,14 @@ const getAllEntities = async entities => {
   return res.results;
 };
 
-const getAllPeople = async () => await getAllEntities("people");
+const getAllPeople = async () => {
+  const people = await getAllEntities("people");
+  return people.map(person => modificationPersonData(person));
+};
 
-const getAllPlanets = async () => await getAllEntities("planets");
+const getAllPlanets = () => getAllEntities("planets");
 
-const getAllStarships = async () => await getAllEntities("starships");
+const getAllStarships = () => getAllEntities("starships");
 
 export {
   getAllPeople,

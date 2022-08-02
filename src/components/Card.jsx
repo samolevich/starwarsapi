@@ -3,16 +3,16 @@ const Card = ({ person }) => {
   const classNames =
     "card text-white mb-3 " + randomCardColor[Math.floor(Math.random() * 4)];
 
-  const { name, header, ...features } = person;
+  const { name, header, id, ...features } = person;
 
-  const featuresList = Object.entries(features).map(([key, value]) => {
+  const featuresList = Object.entries(features).map(([k, value]) => {
     if (value === "n/a") return null;
     return (
       <li
-        key={key}
+        key={k}
         className="list-group-item d-flex justify-content-between align-items-center"
       >
-        {key}
+        {k}
         <span className="badge bg-primary rounded-pill">{value}</span>
       </li>
     );

@@ -44,7 +44,9 @@ const App = () => {
     })();
     getPerson(5).then(person => setPerson(person));
   }, []);
-  // console.log(person);
+
+  const onItemClick = id => {};
+  // console.log(people);
   return (
     <>
       <Routes>

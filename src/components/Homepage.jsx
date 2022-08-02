@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Card from "./Card";
 
 const Homepage = () => {
   return (
