@@ -45,7 +45,20 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout routes={routes} />}>
-          <Route index element={<Homepage routes={routes} />} />
+          <Route
+            index
+            element={
+              <Homepage
+                routes={routes}
+                person={person}
+                setPerson={setPerson}
+                starship={starship}
+                setStarship={setStarship}
+                planet={planet}
+                setPlanet={setPlanet}
+              />
+            }
+          />
           <Route
             path="persons"
             element={
